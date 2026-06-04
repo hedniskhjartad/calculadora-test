@@ -4,31 +4,39 @@
 
 using std::cin, std::cout;
 
+void menu();
+
 int main(){
 
-    int operation;
+    unsigned int operation;
 
     while (operation != 5){
-    cout << "Choose an operation\n\n";
-    cout << "1. +\n";
-    cout << "2. -\n";
-    cout << "3. x\n";
-    cout << "4. /\n";
-    cout << "5. Exit\n";
-    cin >> operation;
+    menu();
+
+    while (!(cin >> operation) || operation >= 6 || operation <= 0){
+        cout << "Error invalid option !\n";
+        menu();
+        cin.clear();
+        cin.ignore(std::numeric_limits<std::streamsize>::max(),'\n');
+    }
+    
     if (operation == 5){return 0;}
     
 
-    int number1;
-    int number2;
+    double number1;
+    double number2;
     
     cout << "Type 1st number : ";
-    if(!(cin >> number1)){
+    while(!(cin >> number1)){
+        cout <<"\nInvalid number\n";
+        cout << "Type 1st number : ";
         cin.clear();
         cin.ignore(std::numeric_limits<std::streamsize>::max(),'\n');
     }
     cout << "\nType 2nd number : ";
-    if(!(cin >> number2)){
+    while(!(cin >> number2)){
+        cout <<"\nInvalid number\n";
+        cout << "\nType 2nd number : ";
         cin.clear();
         cin.ignore(std::numeric_limits<std::streamsize>::max(),'\n');
     }
@@ -46,4 +54,13 @@ int main(){
     }
 
 return 0;
+}
+
+void menu(){
+    cout << "Choose an operation\n\n";
+    cout << "1. +\n";
+    cout << "2. -\n";
+    cout << "3. x\n";
+    cout << "4. /\n";
+    cout << "5. Exit\n";
 }
