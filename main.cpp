@@ -9,18 +9,22 @@ void menu();
 int main(){
 
     unsigned int operation;
+    const int limit = 6;
 
-    while (operation != 5){
+    while (operation != limit){
     menu();
 
-    while (!(cin >> operation) || operation >= 6 || operation <= 0){
+    while (!(cin >> operation) || operation > limit || operation <= 0){
         cout << "Error invalid option !\n";
         menu();
         cin.clear();
         cin.ignore(std::numeric_limits<std::streamsize>::max(),'\n');
     }
-    
-    if (operation == 5){return 0;}
+
+    if (operation == limit)
+    {
+        return 0;
+    }
     
 
     double number1;
@@ -47,6 +51,7 @@ int main(){
     case 2: cout << "Result = " << subtraction(number1,number2) << "\n\n";break;
     case 3: cout << "Result = " << multiplication(number1,number2) << "\n\n";break;
     case 4: cout << "Result = " << division(number1,number2) << "\n\n";break;
+    case 5: cout << "Result = " << power(number1,number2) << "\n\n";break;
 
     default:cout << "Error, invalid value\n";break;
     }
@@ -62,5 +67,6 @@ void menu(){
     cout << "2. -\n";
     cout << "3. x\n";
     cout << "4. /\n";
-    cout << "5. Exit\n";
+    cout << "5. ^\n";
+    cout << "6 Exit\n";
 }

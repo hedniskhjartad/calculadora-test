@@ -1,7 +1,9 @@
 #pragma once 
 #include <iostream>
+#include <cmath>
 
-int addition(int x, int y);
-int subtraction(int x, int y);
-int multiplication(int x, int y);
-int division(int x, int y);
+double addition(double x, double y);
+double subtraction(double x, double y);
+double multiplication(double x, double y);
+double division(double x, double y);
+double power(double x, double y);

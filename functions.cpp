@@ -1,17 +1,21 @@
 #include "functions.hpp"
 
-int addition(int x, int y){
+double addition(double x, double y){
     return x + y;
 }
 
-int subtraction(int x, int y){
+double subtraction(double x, double y){
     return x - y;
 }
 
-int multiplication(int x, int y){
+double multiplication(double x, double y){
     return x * y;
 }
 
-int division(int x, int y){
+double division(double x, double y){
     return x / y;
 }
+
+double power(double x, double y){
+    return pow(x,y);
+};
