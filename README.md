@@ -1,2 +1,2 @@
 ## Calculadora
-Calculadora de prueba, aprendioendo sobre github
+Calculadora de prueba, aprendiendo sobre github
