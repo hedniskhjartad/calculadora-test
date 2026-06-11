@@ -1,8 +1,9 @@
 #include <iostream>
 #include <limits>
 #include "functions.hpp"
+#include <cctype>
 
-using std::cin, std::cout;
+using std::cin, std::cout , std::string;
 
 void menu();
 
@@ -11,21 +12,49 @@ int main(){
     unsigned int operation;
     const int limit = 6;
 
-    while (operation != limit){
-    menu();
+    string input;
+    bool isValid = false;
 
-    while (!(cin >> operation) || operation > limit || operation <= 0){
-        cout << "Error invalid option !\n";
-        menu();
-        cin.clear();
-        cin.ignore(std::numeric_limits<std::streamsize>::max(),'\n');
-    }
-
-    if (operation == limit)
+    while (isValid == false)
     {
-        return 0;
+        menu();
+        cin >> input;
+
+        if (input.empty()){
+            cout << "Error Empty!\n";
+            continue;}
+
+        bool isInteger = true;
+        for (char c : input){
+
+            if (!std::isdigit(c)){
+                isInteger = false;
+                break;
+            }
+        }
+        
+        if (isInteger == false){
+            cout << "Error decimals and characters are not allowed !\n\n";
+            continue;
+        }
+        
+        unsigned long ConvertedValor = std::stoul(input);
+
+        if (ConvertedValor <= limit && ConvertedValor >= 1){
+            operation = static_cast<unsigned int>(ConvertedValor);
+            isValid = true;
+        }
+        else{cout << "Error option has to be in 1 - 6 range !\n\n";
+            continue;}
+        
+
+        if (operation == limit){return 0;}
     }
     
+    
+
+    while (operation != limit){
+    menu();
 
     double number1;
     double number2;
