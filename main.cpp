@@ -3,21 +3,26 @@
 #include <cctype>
 #include "functions.hpp"
 
-
 using std::cin, std::cout , std::string;
 
+bool isValidNumber(double& n);
 void menu();
 
 int main(){
 
-    unsigned int operation;
-    const int limit = 6;
+unsigned int operation;
+const int limit = 6;
 
-    string input;
-    bool isValid = false;
+string input;
+bool isValid = false;
 
-    double number1;
-    double number2;
+bool isValid2 = false;
+double number1 = 0;
+double number2 = 0;
+
+
+while (true)
+{
 
     while (isValid == false)
     {
@@ -56,19 +61,19 @@ int main(){
         if (operation == limit){return 0;}
     }
     
+    isValid = false;
     
-
-    while (operation != limit){
+    while (isValid2 == false){
 
     cout << "Type 1st number : ";
-    while(!(cin >> number1)){
+    while(!isValidNumber(number1)){
         cout <<"\nInvalid number\n";
         cout << "Type 1st number : ";
         cin.clear();
         cin.ignore(std::numeric_limits<std::streamsize>::max(),'\n');
     }
     cout << "\nType 2nd number : ";
-    while(!(cin >> number2)){
+    while(!isValidNumber(number2)){
         cout <<"\nInvalid number\n";
         cout << "\nType 2nd number : ";
         cin.clear();
@@ -86,8 +91,11 @@ int main(){
     default:cout << "Error, invalid value\n";break;
     }
     
+    isValid2 = true;
     }
+isValid2 = false;
 
+}   
 return 0;
 }
 
@@ -100,3 +108,16 @@ void menu(){
     cout << "5. ^\n";
     cout << "6 Exit\n";
 }
+
+bool isValidNumber(double& n){
+
+    if (cin >> n)
+    {
+        if (cin.peek() == '\n' || cin.peek() == EOF)
+        {
+            return true;
+        } 
+}
+return false;
+
+};
