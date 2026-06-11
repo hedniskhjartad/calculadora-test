@@ -1,7 +1,8 @@
 #include <iostream>
 #include <limits>
-#include "functions.hpp"
 #include <cctype>
+#include "functions.hpp"
+
 
 using std::cin, std::cout , std::string;
 
@@ -15,6 +16,9 @@ int main(){
     string input;
     bool isValid = false;
 
+    double number1;
+    double number2;
+
     while (isValid == false)
     {
         menu();
@@ -25,6 +29,7 @@ int main(){
             continue;}
 
         bool isInteger = true;
+        
         for (char c : input){
 
             if (!std::isdigit(c)){
@@ -54,11 +59,7 @@ int main(){
     
 
     while (operation != limit){
-    menu();
 
-    double number1;
-    double number2;
-    
     cout << "Type 1st number : ";
     while(!(cin >> number1)){
         cout <<"\nInvalid number\n";
